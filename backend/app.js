@@ -68,11 +68,11 @@ app.get('api/users', async (req, res) => {
     const search = q.toLowerCase();
 
     const filterData = userData.filter(row => {
-        Object.values(row).some(value => value.toLowerCase().includes
+        return Object.values(row).some(value => value.toLowerCase().includes
     (search))
     })
     //4. return 200 with the filter data
     return res.status(200).send({
-        data: []
+        data: filterData
     })
 })

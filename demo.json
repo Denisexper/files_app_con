@@ -1,0 +1,38 @@
+[
+    {
+      "id": 1,
+      "nombre": "Carlos",
+      "edad": 25,
+      "departamento": "Ventas",
+      "email": "carlos@example.com"
+    },
+    {
+      "id": 2,
+      "nombre": "Ana",
+      "edad": 30,
+      "departamento": "Administración",
+      "email": "ana@example.com"
+    },
+    {
+      "id": 3,
+      "nombre": "Pedro",
+      "edad": 22,
+      "departamento": "Marketing",
+      "email": "pedro@example.com"
+    },
+    {
+      "id": 4,
+      "nombre": "Lucía",
+      "edad": 28,
+      "departamento": "Recursos Humanos",
+      "email": "lucia@example.com"
+    },
+    {
+      "id": 5,
+      "nombre": "Miguel",
+      "edad": 35,
+      "departamento": "Ventas",
+      "email": "miguel@example.com"
+    }
+  ]
+  
