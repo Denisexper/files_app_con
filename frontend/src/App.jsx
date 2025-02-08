@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Toaster, toast } from 'sonner'
 import './App.css'
 import { uploadfile } from './services/upload.js'
+import { Searach } from './steps/Search.jsx'
 
 const APP_STATUS = {
   IDLE: 'idle', // al entrar 
@@ -79,6 +80,12 @@ function App() {
             </button>
             )}
           </form>
+        )
+      }
+
+      {
+        appStatus === APP_STATUS.READY_USAGE && (
+          <Searach initialData={data} />
         )
       }
     </>
