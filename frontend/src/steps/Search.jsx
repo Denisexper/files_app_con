@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react"
 import { searchData } from "../services/search.js"
 import { toast } from "sonner"
+import { useDebounce } from "@uidotdev/usehooks"
+
+//debounce es un hook que nos permite esperar un tiempo antes de que se ejecute una funcion
+const DEBOUNCE_TIME = 500;
 
 export const Search = ({ initialData }) => {
     const [data, setData] = useState(initialData)
@@ -9,23 +13,25 @@ export const Search = ({ initialData }) => {
         return searchParams.get('q') ?? ''
     })
 
+    const debounceSearch = useDebounce(search, DEBOUNCE_TIME)
+
     const handleSearch = (event) => {
         setSearch(event.target.value)
     }
 
     useEffect(() => {
-        const newPathname = search === '' ? window.location.pathname : `?q=${search}`
+        const newPathname = debounceSearch === '' ? window.location.pathname : `?q=${debounceSearch}`
         window.history.replaceState({}, '', newPathname)
-    }, [search])
+    }, [debounceSearch])
 
     useEffect(() => {
-        if (!search) {
+        if (!debounceSearch) {
             setData(initialData)
             return
         }
 
         // Llamar a la API para filtrar los resultados
-        searchData(search)
+        searchData(debounceSearch)
             .then((newData) => {
                 if (!newData) {
                     toast.error("No data found")
@@ -37,7 +43,7 @@ export const Search = ({ initialData }) => {
             .catch((err) => {
                 toast.error(err.message)
             })
-    }, [search, initialData])
+    }, [debounceSearch, initialData])
 
     return (
         <div>
