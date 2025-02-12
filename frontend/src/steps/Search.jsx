@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { searchData } from "../services/search"
+import { searchData } from "../services/search.js"
 import { toast } from "sonner"
 
 export const Search = ({ initialData }) => {
